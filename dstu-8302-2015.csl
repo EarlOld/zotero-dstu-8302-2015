@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="numeric" version="1.0"
+  demote-non-dropping-particle="sort-only" default-locale="uk-UA" page-range-format="expanded">
+  <info>
+    <title>ДСТУ 8302:2015 (Ukrainian)</title>
+    <id>http://www.zotero.org/styles/dstu-8302-2015</id>
+    <link href="http://www.zotero.org/styles/dstu-8302-2015" rel="self" />
+    <link href="https://ivt.kpi.ua/dstu-83022015-bibliografichne-posylannya/" rel="documentation" />
+    <author>
+      <name>EarlOld</name>
+    </author>
+    <category citation-format="numeric" />
+    <category field="generic-base" />
+    <updated>2026-01-26T00:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a
+      Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+
+  <!-- Ukrainian locale -->
+  <locale xml:lang="uk">
+    <terms>
+      <term name="page" form="short">с.</term>
+      <term name="page" form="long">сторінка</term>
+      <term name="pages" form="short">с.</term>
+      <term name="pages" form="long">сторінки</term>
+      <term name="volume" form="short">т.</term>
+      <term name="issue" form="short">вип.</term>
+      <term name="issue" form="long">випуск</term>
+      <term name="edition" form="short">вид.</term>
+      <term name="edition" form="long">видання</term>
+      <term name="chapter" form="short">гл.</term>
+      <term name="chapter" form="long">глава</term>
+      <term name="editor" form="verb-short">ред.</term>
+      <term name="editor" form="verb">за ред.</term>
+      <term name="translator" form="verb-short">пер.</term>
+      <term name="translator" form="verb">перекл.</term>
+      <term name="et-al">та ін.</term>
+      <term name="and">та</term>
+      <term name="accessed">дата звернення</term>
+      <term name="no date">б.д.</term>
+      <term name="in">в</term>
+      <term name="container-author" form="verb">за ред.</term>
+      <term name="sort_language_cyr">20_cyr</term>
+      <term name="sort_language_lat">50_lat</term>
+    </terms>
+  </locale>
+
+  <!-- English locale -->
+  <locale xml:lang="en">
+    <terms>
+      <term name="page" form="short">p.</term>
+      <term name="pages" form="short">pp.</term>
+      <term name="volume" form="short">vol.</term>
+      <term name="issue" form="short">no.</term>
+      <term name="edition" form="short">ed.</term>
+      <term name="chapter" form="short">ch.</term>
+      <term name="editor" form="verb-short">ed.</term>
+      <term name="translator" form="verb-short">trans.</term>
+      <term name="et-al">et al.</term>
+      <term name="and">and</term>
+      <term name="accessed">accessed</term>
+      <term name="no date">n.d.</term>
+      <term name="in">in</term>
+      <term name="container-author" form="verb">ed.</term>
+      <term name="sort_language_cyr">20_cyr</term>
+      <term name="sort_language_lat">50_lat</term>
+    </terms>
+  </locale>
+
+  <!-- MACROS -->
+
+  <!-- Authors/Editors -->
+  <macro name="author">
+    <names variable="author">
+      <name form="long" and="text" delimiter=", " name-as-sort-order="first" sort-separator=" " />
+      <substitute>
+        <names variable="editor" />
+        <names variable="container-author" />
+        <text variable="title" />
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="author-short">
+    <names variable="author">
+      <name form="short" and="text" delimiter=", " name-as-sort-order="first" />
+      <substitute>
+        <names variable="editor" />
+        <text variable="title" form="short" />
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="editor">
+    <names variable="editor">
+      <label form="verb" suffix=" " />
+      <name form="long" and="text" delimiter=", " />
+    </names>
+  </macro>
+
+  <macro name="translator">
+    <names variable="translator">
+      <label form="verb" suffix=" " />
+      <name form="long" and="text" delimiter=", " />
+    </names>
+  </macro>
+
+  <!-- Title -->
+  <macro name="title">
+    <choose>
+      <if type="book thesis" match="any">
+        <text variable="title" />
+      </if>
+      <else-if type="chapter paper-conference" match="any">
+        <text variable="title" />
+      </else-if>
+      <else-if type="article-journal article-magazine article-newspaper" match="any">
+        <text variable="title" />
+      </else-if>
+      <else>
+        <text variable="title" />
+      </else>
+    </choose>
+  </macro>
+
+  <!-- Container title (journal, book series, etc.) -->
+  <macro name="container-title">
+    <choose>
+      <if type="chapter paper-conference" match="any">
+        <text variable="container-title" />
+      </if>
+      <else-if type="article-journal article-magazine" match="any">
+        <text variable="container-title" />
+      </else-if>
+    </choose>
+  </macro>
+
+  <!-- Publication info -->
+  <macro name="publication-info">
+    <group delimiter=" : ">
+      <text variable="publisher-place" />
+      <text variable="publisher" />
+    </group>
+  </macro>
+
+  <!-- Publication info for books (with period instead of comma) -->
+  <macro name="publication-info-book">
+    <group delimiter=" : ">
+      <text variable="publisher-place" />
+      <text variable="publisher" />
+    </group>
+  </macro>
+
+  <!-- Volume and issue -->
+  <macro name="volume-issue">
+    <choose>
+      <!-- English language: use Vol., no. -->
+      <if variable="language" match="any" pattern="en">
+        <group delimiter=", ">
+          <group delimiter=" ">
+            <text value="Vol." />
+            <text variable="volume" />
+          </group>
+          <group delimiter=" ">
+            <text value="no." />
+            <text variable="issue" />
+          </group>
+        </group>
+      </if>
+      <!-- Ukrainian language: use Т., Вип. -->
+      <else>
+        <group delimiter=", ">
+          <group delimiter=" ">
+            <text value="Т." />
+            <text variable="volume" />
+          </group>
+          <group delimiter=" ">
+            <text value="Вип." />
+            <text variable="issue" />
+          </group>
+        </group>
+      </else>
+    </choose>
+  </macro>
+
+  <!-- Pages -->
+  <macro name="pages">
+    <choose>
+      <!-- English language: use P. -->
+      <if variable="language" match="any" pattern="en">
+        <group delimiter=" ">
+          <text value="P." />
+          <text variable="page" />
+        </group>
+      </if>
+      <!-- Ukrainian language: use С. -->
+      <else>
+        <group delimiter=" ">
+          <text value="С." />
+          <text variable="page" />
+        </group>
+      </else>
+    </choose>
+  </macro>
+
+  <!-- Issued date -->
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year" />
+    </date>
+  </macro>
+
+  <!-- URL and access date -->
+  <macro name="access">
+    <group delimiter=" ">
+      <text variable="URL" prefix="URL: " />
+      <group delimiter=" " prefix="(" suffix=")">
+        <label variable="accessed" form="short" />
+        <date variable="accessed">
+          <date-part name="day" suffix="." />
+          <date-part name="month" suffix="." />
+          <date-part name="year" />
+        </date>
+      </group>
+    </group>
+  </macro>
+
+  <!-- Patent specific -->
+  <macro name="patent-info">
+    <group delimiter=" ">
+      <text variable="number" prefix="№ " />
+      <group delimiter=" ">
+        <text variable="jurisdiction" />
+        <text variable="classification" />
+      </group>
+      <group delimiter=" " prefix="№ ">
+        <text variable="status" />
+      </group>
+      <group delimiter=" ">
+        <label variable="issued" form="short" />
+        <date variable="issued">
+          <date-part name="day" suffix="." />
+          <date-part name="month" suffix="." />
+          <date-part name="year" />
+        </date>
+      </group>
+    </group>
+  </macro>
+
+  <!-- Archive info -->
+  <macro name="archive-info">
+    <group delimiter=". ">
+      <text variable="archive" suffix=" (" />
+      <text variable="archive-place" suffix=")" />
+      <group delimiter=" ">
+        <text variable="collection-number" prefix="Ф. " />
+      </group>
+      <group delimiter=" ">
+        <text variable="issue" prefix="Оп. " />
+      </group>
+      <group delimiter=" ">
+        <text variable="number" prefix="Спр. " />
+      </group>
+    </group>
+  </macro>
+
+  <!-- DOI -->
+  <macro name="doi">
+    <group delimiter=" ">
+      <text variable="DOI" prefix="DOI: " />
+    </group>
+  </macro>
+
+  <!-- Genre (монографія, навч. посіб., etc.) -->
+  <!-- Genre (only for theses) -->
+  <macro name="genre">
+    <choose>
+      <if type="thesis">
+        <!-- For thesis, only show if genre is explicitly set -->
+        <text variable="genre" />
+      </if>
+    </choose>
+  </macro>
+
+  <!-- CITATION (numeric with ranges) -->
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number" />
+    </sort>
+    <layout prefix="[" suffix="]" delimiter=", ">
+      <text variable="citation-number" />
+    </layout>
+  </citation>
+
+
+  <!-- BIBLIOGRAPHY -->
+  <bibliography>
+    <sort>
+      <key variable="language" sort="descending" />
+      <key variable="author" sort="ascending" />
+    </sort>
+
+    <layout suffix=".">
+      <text variable="citation-number" suffix=". " />
+      <choose>
+        <!-- Book -->
+        <if type="book">
+          <group delimiter=" ">
+            <text macro="author" suffix="." />
+            <text macro="title" suffix="." />
+            <text macro="genre" suffix="." />
+            <choose>
+              <if variable="volume" match="any">
+                <text variable="volume" prefix="т. " suffix=" :" />
+              </if>
+            </choose>
+            <text macro="publication-info-book" suffix="." />
+            <text macro="issued" suffix="." />
+            <text variable="number-of-pages" suffix=" с" />
+          </group>
+          <group delimiter=" " prefix=" " suffix="">
+            <text macro="access" />
+          </group>
+        </if>
+
+        <!-- Chapter in book -->
+        <else-if type="chapter">
+          <group delimiter=" ">
+            <text macro="author" suffix="." />
+            <text macro="title" suffix="." />
+            <text macro="container-title" prefix="У: " />
+            <group delimiter="/" suffix=".">
+              <text macro="editor" />
+            </group>
+            <text macro="publication-info" suffix="," />
+            <text macro="issued" suffix="." />
+            <text macro="pages" suffix="." />
+          </group>
+          <group delimiter=" " prefix=" " suffix="">
+            <text macro="access" />
+          </group>
+        </else-if>
+
+        <!-- Journal article -->
+        <else-if type="article-journal">
+          <group delimiter=" ">
+            <text macro="author" suffix="." />
+            <text macro="title" suffix="." />
+            <text macro="container-title" suffix="." />
+            <text macro="issued" suffix="." />
+            <text macro="volume-issue" suffix="." />
+            <text macro="pages" suffix="." />
+            <choose>
+              <if variable="DOI" match="any">
+                <text macro="doi" suffix="." />
+              </if>
+            </choose>
+            <choose>
+              <if variable="URL" match="any">
+                <text macro="access" suffix="." />
+              </if>
+            </choose>
+          </group>
+        </else-if>
+
+        <!-- Magazine/Newspaper article -->
+        <else-if type="article-magazine article-newspaper">
+          <group delimiter=" ">
+            <text macro="author" suffix="." />
+            <text macro="title" suffix="." />
+            <text macro="container-title" suffix="." />
+            <group delimiter=" ">
+              <date variable="issued">
+                <date-part name="day" suffix=" " />
+                <date-part name="month" suffix=" " />
+                <date-part name="year" />
+              </date>
+            </group>
+            <text variable="page" prefix="с. " suffix="." />
+          </group>
+        </else-if>
+
+        <!-- Thesis (dissertation) -->
+        <else-if type="thesis">
+          <group delimiter=" ">
+            <text macro="author" suffix="." />
+            <text macro="title" suffix=" :" />
+            <text macro="genre" suffix="." />
+            <text macro="publication-info" suffix="," />
+            <text macro="issued" suffix="." />
+            <text variable="number-of-pages" suffix=" с" />
+          </group>
+        </else-if>
+
+        <!-- Patent -->
+        <else-if type="patent">
+          <group delimiter=" ">
+            <text macro="title" suffix=" :" />
+            <text macro="genre" suffix="." />
+            <text variable="number" prefix="№ " suffix=" " />
+            <text variable="jurisdiction" />
+            <choose>
+              <if variable="classification" match="any">
+                <text variable="classification" prefix=": " />
+              </if>
+            </choose>
+            <group delimiter=" " prefix=". ">
+              <text variable="references" prefix="№ " />
+            </group>
+            <group delimiter=" ">
+              <label variable="issued" form="short" prefix="; " />
+              <date variable="issued">
+                <date-part name="day" suffix="." />
+                <date-part name="month" suffix="." />
+                <date-part name="year" />
+              </date>
+            </group>
+            <group delimiter=" " prefix="; ">
+              <text variable="archive" prefix="Бюл. № " />
+            </group>
+            <text variable="number-of-pages" prefix=". " suffix=" с" />
+          </group>
+        </else-if>
+
+        <!-- Standard/ГОСТ/ДСТУ -->
+        <else-if type="standard">
+          <group delimiter=" ">
+            <text variable="title" suffix="." />
+            <text variable="number" prefix="ДСТУ " suffix="." />
+            <choose>
+              <if variable="version" match="any">
+                <text variable="version" prefix="Версія " suffix="." />
+              </if>
+            </choose>
+            <choose>
+              <if variable="issued" match="any">
+                <group delimiter=" ">
+                  <text variable="status" prefix="Чинний від " />
+                </group>
+              </if>
+            </choose>
+            <text variable="publisher-place" prefix=". " suffix=" :" />
+            <text variable="publisher" suffix="," />
+            <text macro="issued" suffix="." />
+            <text variable="number-of-pages" suffix=" с" />
+          </group>
+        </else-if>
+
+        <!-- Website/Online -->
+        <else-if type="webpage">
+          <group delimiter=" ">
+            <text macro="author" suffix="." />
+            <text macro="title" suffix="." />
+            <text macro="access" suffix="." />
+          </group>
+        </else-if>
+
+        <!-- Conference paper -->
+        <else-if type="paper-conference">
+          <group delimiter=" ">
+            <text macro="author" suffix="." />
+            <text macro="title" suffix="." />
+            <text variable="event" prefix="У: " suffix="." />
+            <text variable="event-place" suffix="," />
+            <date variable="event-date">
+              <date-part name="day" suffix=" " />
+              <date-part name="month" suffix=" " />
+            </date>
+            <text macro="issued" suffix="." />
+            <text macro="pages" suffix="." />
+          </group>
+        </else-if>
+
+        <!-- Default -->
+        <else>
+          <group delimiter=" ">
+            <text macro="author" suffix="." />
+            <text macro="title" suffix="." />
+            <text macro="publication-info" suffix="," />
+            <text macro="issued" suffix="." />
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

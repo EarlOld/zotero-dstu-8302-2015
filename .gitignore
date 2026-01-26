@@ -1,0 +1,6 @@
+./citeproc-node
+
+node_modules
+tests/reports
+playwright-report
+test-results

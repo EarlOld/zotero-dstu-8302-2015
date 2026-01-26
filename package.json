@@ -1,0 +1,28 @@
+{
+  "name": "zotero-dstu-8302-2015",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:server": "bash ./run-server.sh",
+    "test": "playwright test --reporter=list",
+    "test:playwright:ui": "playwright test --ui",
+    "test:playwright:debug": "playwright test --debug",
+    "test:playwright:headed": "playwright test --headed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EarlOld/zotero-dstu-8302-2015.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/EarlOld/zotero-dstu-8302-2015/issues"
+  },
+  "homepage": "https://github.com/EarlOld/zotero-dstu-8302-2015#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.0"
+  }
+}
