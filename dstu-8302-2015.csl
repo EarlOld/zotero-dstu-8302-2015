@@ -34,8 +34,8 @@
   <!-- Authors/Editors -->
   <macro name="author">
     <names variable="author">
-      <name form="long" delimiter=", " sort-separator=" "
-        et-al-min="4" et-al-use-first="3" delimiter-precedes-et-al="never" />
+      <name form="long" name-as-sort-order="first" delimiter=", " sort-separator=" "
+        et-al-min="4" et-al-use-first="3" delimiter-precedes-et-al="never" initialize-with=". " />
       <et-al term="et-al" />
       <substitute>
         <names variable="editor" />

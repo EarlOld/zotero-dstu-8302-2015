@@ -17,6 +17,7 @@ test('Multiple sources - should sort Ukrainian first', async () => {
             title: 'Українське джерело',
             author: [{ family: 'Петренко', given: 'І. І.' }],
             type: 'book',
+            language: 'uk',
             publisher: 'Видавництво',
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2020]] },
@@ -27,6 +28,7 @@ test('Multiple sources - should sort Ukrainian first', async () => {
             title: 'English source',
             author: [{ family: 'Smith', given: 'J.' }],
             type: 'book',
+            language: 'en',
             publisher: 'Publisher',
             'publisher-place': 'London',
             issued: { 'date-parts': [[2020]] },
@@ -35,7 +37,7 @@ test('Multiple sources - should sort Ukrainian first', async () => {
         },
         bibliography: true
       },
-      expected: '1. J. Smith. English source. London : Publisher. 2020. 150 с.\n\n  2. І. І. Петренко. Українське джерело. Київ : Видавництво. 2020. 100 с.'
+      expected: '1. Петренко І. І. Українське джерело. Київ : Видавництво. 2020. 100 с.\n\n  2. Smith J. English source. London : Publisher. 2020. 150 с.'
     },
     expect
   );
@@ -52,6 +54,7 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
             title: 'Третій український',
             author: [{ family: 'Федоренко', given: 'В.' }],
             type: 'book',
+            language: 'uk',
             publisher: 'Видавництво',
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2019]] },
@@ -62,6 +65,7 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
             title: 'Brown work',
             author: [{ family: 'Brown', given: 'A.' }],
             type: 'book',
+            language: 'en',
             publisher: 'Publisher',
             'publisher-place': 'London',
             issued: { 'date-parts': [[2021]] },
@@ -69,9 +73,10 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
           },
           'ITEM-UK1': {
             id: 'ITEM-UK1',
-            title: 'Перший український',
-            author: [{ family: 'Абраменко', given: 'М.' }],
+            title: 'Третій український',
+            author: [{ family: 'Коваленко', given: 'М. В.' }],
             type: 'book',
+            language: 'uk',
             publisher: 'Видавництво',
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2018]] },
@@ -80,8 +85,9 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
           'ITEM-EN3': {
             id: 'ITEM-EN3',
             title: 'Wilson study',
-            author: [{ family: 'Wilson', given: 'R.' }],
+            author: [{ family: 'Wilson', given: 'P.' }],
             type: 'book',
+            language: 'en',
             publisher: 'Publisher',
             'publisher-place': 'Boston',
             issued: { 'date-parts': [[2022]] },
@@ -90,8 +96,9 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
           'ITEM-UK2': {
             id: 'ITEM-UK2',
             title: 'Другий український',
-            author: [{ family: 'Дмитренко', given: 'О.' }],
+            author: [{ family: 'Іванов', given: 'В. І.' }],
             type: 'book',
+            language: 'uk',
             publisher: 'Видавництво',
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2020]] },
@@ -102,6 +109,7 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
             title: 'Anderson research',
             author: [{ family: 'Anderson', given: 'T.' }],
             type: 'book',
+            language: 'en',
             publisher: 'Publisher',
             'publisher-place': 'New York',
             issued: { 'date-parts': [[2020]] },
@@ -111,11 +119,11 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
         bibliography: true
       },
       checks: [
+        (output) => output.indexOf('Іванов') < output.indexOf('Коваленко'), // Українські за алфавітом
+        (output) => output.indexOf('Коваленко') < output.indexOf('Федоренко'), // Українські за алфавітом
+        (output) => output.indexOf('Федоренко') < output.indexOf('Anderson'), // Все укр перед англ
         (output) => output.indexOf('Anderson') < output.indexOf('Brown'), // Англійські за алфавітом
-        (output) => output.indexOf('Brown') < output.indexOf('Wilson'), // Англійські за алфавітом
-        (output) => output.indexOf('Wilson') < output.indexOf('Абраменко'), // Все англ перед укр
-        (output) => output.indexOf('Абраменко') < output.indexOf('Дмитренко'), // Українські за алфавітом
-        (output) => output.indexOf('Дмитренко') < output.indexOf('Федоренко') // Українські за алфавітом
+        (output) => output.indexOf('Brown') < output.indexOf('Wilson') // Англійські за алфавітом
       ]
     },
     expect

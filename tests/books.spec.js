@@ -17,7 +17,7 @@ test('Book with single author', async () => {
             title: 'Телевізійні інформаційно-вимірювальні системи',
             author: [{ family: 'Маркін', given: 'М. О.' }],
             type: 'book',
-            publisher: 'КПІ ім. Ігоря Сікорського',
+            language: 'uk',            publisher: 'КПІ ім. Ігоря Сікорського',
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2020]] },
             'number-of-pages': '285'
@@ -45,7 +45,7 @@ test('Book with two authors', async () => {
               { family: 'Маркіна', given: 'О. М.' }
             ],
             type: 'book',
-            publisher: 'КПІ ім. Ігоря Сікорського',
+            language: 'uk',            publisher: 'КПІ ім. Ігоря Сікорського',
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2021]] },
             'number-of-pages': '156'
@@ -74,7 +74,7 @@ test('Book with three authors (Ukrainian)', async () => {
               { family: 'Іванов', given: 'О. М.' }
             ],
             type: 'book',
-            publisher: 'Видавництво КПІ',
+            language: 'uk',            publisher: 'Видавництво КПІ',
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2022]] },
             'number-of-pages': '320'
@@ -104,7 +104,7 @@ test('Book with four authors (Ukrainian)', async () => {
               { family: 'Коваленко', given: 'Р. В.' }
             ],
             type: 'book',
-            publisher: 'Видавництво КПІ',
+            language: 'uk',            publisher: 'Видавництво КПІ',
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2023]] },
             'number-of-pages': '450'
@@ -133,6 +133,7 @@ test('Book with three authors (English)', async () => {
               { family: 'Brown', given: 'A.' }
             ],
             type: 'book',
+            language: 'en',
             publisher: 'Academic Press',
             'publisher-place': 'London',
             issued: { 'date-parts': [[2021]] },
@@ -164,6 +165,7 @@ test('Book with five authors (English)', async () => {
               { family: 'Thomas', given: 'S.' }
             ],
             type: 'book',
+            language: 'en',
             publisher: 'Springer',
             'publisher-place': 'New York',
             issued: { 'date-parts': [[2020]] },
