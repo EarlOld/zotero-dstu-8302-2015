@@ -25,7 +25,7 @@ test('Book with single author', async () => {
         },
         bibliography: true
       },
-      expected: '1. М. О. Маркін. Телевізійні інформаційно-вимірювальні системи. Київ : КПІ ім. Ігоря Сікорського. 2020. 285 с.'
+      expected: '1. Маркін М. О. Телевізійні інформаційно-вимірювальні системи. Київ : КПІ ім. Ігоря Сікорського. 2020. 285 с.'
     },
     expect
   );
@@ -53,7 +53,7 @@ test('Book with two authors', async () => {
         },
         bibliography: true
       },
-      expected: '1. М. О. Маркін, О. М. Маркіна. Формування вхідного сигналу в телевізійній інформаційно-вимірювальній системі. Київ : КПІ ім. Ігоря Сікорського. 2021. 156 с.'
+      expected: '1. Маркін М. О., Маркіна О. М. Формування вхідного сигналу в телевізійній інформаційно-вимірювальній системі. Київ : КПІ ім. Ігоря Сікорського. 2021. 156 с.'
     },
     expect
   );
@@ -82,7 +82,7 @@ test('Book with three authors (Ukrainian)', async () => {
         },
         bibliography: true
       },
-      expected: '1. І. І. Петренко, В. В. Сідоренко, О. М. Іванов. Обробка сигналів у телевізійних системах. Київ : Видавництво КПІ. 2022. 320 с.'
+      expected: '1. Петренко І. І., Сідоренко В. В., Іванов О. М. Обробка сигналів у телевізійних системах. Київ : Видавництво КПІ. 2022. 320 с.'
     },
     expect
   );
@@ -112,7 +112,7 @@ test('Book with four authors (Ukrainian)', async () => {
         },
         bibliography: true
       },
-      expected: '1. І. І. Петренко, В. В. Сідоренко, О. М. Іванов et al. Цифрова обробка сигналів. Київ : Видавництво КПІ. 2023. 450 с.'
+      expected: '1. Петренко І. І., Сідоренко В. В., Іванов О. М. et al. Цифрова обробка сигналів. Київ : Видавництво КПІ. 2023. 450 с.'
     },
     expect
   );
@@ -142,7 +142,7 @@ test('Book with three authors (English)', async () => {
         },
         bibliography: true
       },
-      expected: '1. J. Smith, M. Johnson, A. Brown. Advanced Signal Processing Techniques. London : Academic Press. 2021. 380 с.'
+      expected: '1. Smith J., Johnson M., Brown A. Advanced Signal Processing Techniques. London : Academic Press. 2021. 380 с.'
     },
     expect
   );
@@ -174,7 +174,7 @@ test('Book with five authors (English)', async () => {
         },
         bibliography: true
       },
-      expected: '1. R. Wilson, K. Davis, P. Taylor et al. Digital Communication Systems. New York : Springer. 2020. 520 с.'
+      expected: '1. Wilson R., Davis K., Taylor P. et al. Digital Communication Systems. New York : Springer. 2020. 520 с.'
     },
     expect
   );

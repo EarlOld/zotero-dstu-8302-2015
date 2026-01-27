@@ -34,7 +34,7 @@
   <!-- Authors/Editors -->
   <macro name="author">
     <names variable="author">
-      <name form="long" name-as-sort-order="first" delimiter=", " sort-separator=" "
+      <name form="long" name-as-sort-order="all" delimiter=", " sort-separator=" "
         et-al-min="4" et-al-use-first="3" delimiter-precedes-et-al="never" initialize-with=". " />
       <et-al term="et-al" />
       <substitute>
@@ -361,7 +361,7 @@
             <text macro="genre" suffix="." />
             <text macro="publication-info" suffix="," />
             <text macro="issued" suffix="." />
-            <text variable="number-of-pages" suffix=" с" />
+            <text variable="number-of-pages" prefix="P. " />
           </group>
         </else-if>
 

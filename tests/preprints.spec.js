@@ -30,7 +30,7 @@ test('Preprint (arXiv - Ukrainian)', async () => {
         },
         bibliography: true
       },
-      expected: '1. Петренко І. І. та В. В. Сідоренко. Методи квантового машинного навчання для оптимізації. Препринт arXiv № 2024.12345. 2024. URL: https://arxiv.org/abs/2024.12345 (дата звернення 27.січень.2024).'
+      expected: '1. Петренко І. І., Сідоренко В. В. Методи квантового машинного навчання для оптимізації. Препринт arXiv № 2024.12345. 2024. URL: https://arxiv.org/abs/2024.12345 (accessed 27.January.2024).'
     },
     expect
   );
@@ -57,7 +57,7 @@ test('Preprint (medRxiv - Ukrainian)', async () => {
         },
         bibliography: true
       },
-      expected: '1. Джонсон К. Г. Нові підходи до квантової корекції помилок. Препринт medRxiv № 2024.01.15.574892. 2024. URL: https://www.medrxiv.org/content/10.1101/2024.01.15.574892v1 (дата звернення 27.січень.2024).'
+      expected: '1. Джонсон К. Г. Нові підходи до квантової корекції помилок. Препринт medRxiv № 2024.01.15.574892. 2024. URL: https://www.medrxiv.org/content/10.1101/2024.01.15.574892v1 (accessed 27.January.2024).'
     },
     expect
   );

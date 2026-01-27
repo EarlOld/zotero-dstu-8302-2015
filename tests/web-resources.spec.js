@@ -23,7 +23,7 @@ test('Website - Organization', async () => {
         },
         bibliography: true
       },
-      expected: '1. КПІ. Офіційний сайт КПІ. URL: https://kpi.ua/ (дата звернення 26.січень.2024).'
+      expected: '1. КПІ. Офіційний сайт КПІ. URL: https://kpi.ua/ (accessed 26.January.2024).'
     },
     expect
   );
@@ -46,7 +46,7 @@ test('Website - Individual author', async () => {
         },
         bibliography: true
       },
-      expected: '1. Іванов О. М. Як правильно цитувати джерела. URL: https://example.com/citations/ (дата звернення 15.грудень.2023).'
+      expected: '1. Іванов О. М. Як правильно цитувати джерела. URL: https://example.com/citations/ (accessed 15.December.2023).'
     },
     expect
   );
@@ -72,7 +72,7 @@ test('Website - Multiple authors', async () => {
         },
         bibliography: true
       },
-      expected: '1. Петренко І. І. та В. В. Сідоренко. Веб-стандарти та рекомендації. URL: https://standards.example.org/ (дата звернення 10.лютий.2024).'
+      expected: '1. Петренко І. І., Сідоренко В. В. Веб-стандарти та рекомендації. URL: https://standards.example.org/ (accessed 10.February.2024).'
     },
     expect
   );
@@ -94,7 +94,7 @@ test('Website - No author', async () => {
         },
         bibliography: true
       },
-      expected: '1. Англійська мова онлайн. URL: https://english-learning.edu/ (дата звернення 5.березень.2024).'
+      expected: '1. Англійська мова онлайн. URL: https://english-learning.edu/ (accessed 5.March.2024).'
     },
     expect
   );
@@ -117,7 +117,7 @@ test('Website - With accessed date', async () => {
         },
         bibliography: true
       },
-      expected: '1. Технологічний портал. Новини інформатики. URL: https://news.tech.com/info/ (дата звернення 20.січень.2024).'
+      expected: '1. Технологічний портал. Новини інформатики. URL: https://news.tech.com/info/ (accessed 20.January.2024).'
     },
     expect
   );

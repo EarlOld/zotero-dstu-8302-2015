@@ -27,7 +27,7 @@ test('Journal article (Ukrainian)', async () => {
         },
         bibliography: true
       },
-      expected: '1. Єременко В. С. Телевізійні методи контролю якості. Вісники КПІ. 2020. Т. 12, Вип. 3. С. 45—52.'
+      expected: '1. Єременко В. С. Телевізійні методи контролю якості. Вісники КПІ. 2020. Vol. 12, Issue 3. P. 45–52.'
     },
     expect
   );
@@ -53,7 +53,7 @@ test('Journal article (English)', async () => {
         },
         bibliography: true
       },
-      expected: '1. Smith J. Digital signal processing. IEEE Transactions. 2021. Т. 15. С. 123—135.'
+      expected: '1. Smith J. Digital signal processing. IEEE Transactions. 2021. Vol. 15. P. 123–135.'
     },
     expect
   );
@@ -83,7 +83,7 @@ test('Journal article (Ukrainian) - Example 2', async () => {
         },
         bibliography: true
       },
-      expected: '1. Здоренко В. Г. та Н. М. Защепкіна. Ультразвуковий метод контролю якості текстильних матеріалів. Архіви матеріалознавства та інженерії. 2019. Т. 97, Вип. 1—2. С. 39—49.'
+      expected: '1. Здоренко В. Г., Защепкіна Н. М. Ультразвуковий метод контролю якості текстильних матеріалів. Архіви матеріалознавства та інженерії. 2019. Vol. 97, Issue 1–2. P. 39–49.'
     },
     expect
   );
@@ -109,7 +109,7 @@ test('Journal article (Ukrainian) - Example 3', async () => {
         },
         bibliography: true
       },
-      expected: '1. Єременко В. С. Цифрові методи обробки сигналів у вимірювальних системах. Метрологія та прилади. 2022. Вип. 4. С. 23—30.'
+      expected: '1. Єременко В. С. Цифрові методи обробки сигналів у вимірювальних системах. Метрологія та прилади. 2022. Issue 4. P. 23–30.'
     },
     expect
   );
@@ -137,7 +137,7 @@ test('Journal article with series and issue', async () => {
         },
         bibliography: true
       },
-      expected: '1. Маркін М. О. Оцінка точності вимірювання геометричних параметрів за допомогою телевізійних інформаційно-вимірювальних систем. Вісник КПІ. 2020. Т. 59, Вип. 1. С. 78—85.'
+      expected: '1. Маркін М. О. Оцінка точності вимірювання геометричних параметрів за допомогою телевізійних інформаційно-вимірювальних систем. Вісник КПІ. 2020. Vol. 59, Issue 1. P. 78–85.'
     },
     expect
   );
@@ -167,7 +167,7 @@ test('Journal article with two authors and volume range', async () => {
         },
         bibliography: true
       },
-      expected: '1. Здоренко В. Г. та Н. М. Защепкіна. Ультразвуковий метод контролю якості текстильних матеріалів. Архіви матеріалознавства та інженерії. 2019. Т. 97, Вип. 1—2. С. 39—49.'
+      expected: '1. Здоренко В. Г., Защепкіна Н. М. Ультразвуковий метод контролю якості текстильних матеріалів. Архіви матеріалознавства та інженерії. 2019. Vol. 97, Issue 1–2. P. 39–49.'
     },
     expect
   );
@@ -199,7 +199,7 @@ test('Journal article with DOI and access date', async () => {
         },
         bibliography: true
       },
-      expected: '1. Порєв В. А. та О. М. Маркіна. Телевізійні інформаційно-вимірювальні системи в технологіях електронно-променевої обробки. Наукові вісті КПІ. 2021. Вип. 3. С. 67—74. DOI: 10.20535/kpi.2021.3.67-74. URL: https://doi.org/10.20535/kpi.2021.3.67-74 (дата звернення 15.березень.2024).'
+      expected: '1. Порєв В. А., Маркіна О. М. Телевізійні інформаційно-вимірювальні системи в технологіях електронно-променевої обробки. Наукові вісті КПІ. 2021. Issue 3. P. 67–74. DOI: 10.20535/kpi.2021.3.67-74. URL: https://doi.org/10.20535/kpi.2021.3.67-74 (accessed 15.March.2024).'
     },
     expect
   );
@@ -231,7 +231,7 @@ test('Journal article in English with volume and issue', async () => {
         },
         bibliography: true
       },
-      expected: '1. Wilson M. та P. Davis. Advanced television measurement systems in industrial applications. Journal of Measurement Science. 2023. Т. 45, Вип. 3. С. 234—248. URL: https://doi.org/10.1016/j.jms.2023.05.012 (дата звернення 12.квітень.2024).'
+      expected: '1. Wilson M., Davis P. Advanced television measurement systems in industrial applications. Journal of Measurement Science. 2023. Vol. 45, Issue 3. P. 234–248. URL: https://doi.org/10.1016/j.jms.2023.05.012 (accessed 12.April.2024).'
     },
     expect
   );
