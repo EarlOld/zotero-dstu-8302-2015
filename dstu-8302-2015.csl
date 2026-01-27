@@ -329,6 +329,11 @@
             </choose>
             <text macro="issued" suffix="." />
             <choose>
+              <if variable="DOI" match="any">
+                <text macro="doi" suffix="." />
+              </if>
+            </choose>
+            <choose>
               <if variable="URL" match="any">
                 <text macro="access" suffix="." />
               </if>

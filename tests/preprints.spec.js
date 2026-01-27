@@ -25,12 +25,13 @@ test('Preprint (arXiv - Ukrainian)', async () => {
             issued: { 'date-parts': [[2024]] },
             URL: 'https://arxiv.org/abs/2024.12345',
             accessed: { 'date-parts': [[2024, 1, 27]] },
+            DOI: '10.48550/arXiv.2024.12345',
             language: 'uk'
           }
         },
         bibliography: true
       },
-      expected: '1. Петренко І. І., Сідоренко В. В. Методи квантового машинного навчання для оптимізації. Препринт arXiv № 2024.12345. 2024. URL: https://arxiv.org/abs/2024.12345 (accessed 27.January.2024).'
+      expected: '1. Петренко І. І., Сідоренко В. В. Методи квантового машинного навчання для оптимізації. Препринт arXiv № 2024.12345. 2024. DOI: 10.48550/arXiv.2024.12345. URL: https://arxiv.org/abs/2024.12345 (accessed 27.January.2024).'
     },
     expect
   );
@@ -52,12 +53,13 @@ test('Preprint (medRxiv - Ukrainian)', async () => {
             issued: { 'date-parts': [[2024]] },
             URL: 'https://www.medrxiv.org/content/10.1101/2024.01.15.574892v1',
             accessed: { 'date-parts': [[2024, 1, 27]] },
+            DOI: '10.1101/2024.01.15.574892',
             language: 'uk'
           }
         },
         bibliography: true
       },
-      expected: '1. Джонсон К. Г. Нові підходи до квантової корекції помилок. Препринт medRxiv № 2024.01.15.574892. 2024. URL: https://www.medrxiv.org/content/10.1101/2024.01.15.574892v1 (accessed 27.January.2024).'
+      expected: '1. Джонсон К. Г. Нові підходи до квантової корекції помилок. Препринт medRxiv № 2024.01.15.574892. 2024. DOI: 10.1101/2024.01.15.574892. URL: https://www.medrxiv.org/content/10.1101/2024.01.15.574892v1 (accessed 27.January.2024).'
     },
     expect
   );
