@@ -114,13 +114,28 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
             'publisher-place': 'New York',
             issued: { 'date-parts': [[2020]] },
             'number-of-pages': '190',
+          },
+          'ITEM-UK4': {
+            id: 'ITEM-UK4',
+            title: 'Економічні та промислові застосування квантових компʼютерів',
+            author: [
+              { family: 'Сапожник', given: 'Дмитро Олегович' },
+              { family: 'Морозов', given: 'Андрій Васильович' }
+            ],
+            type: 'paper-conference',
+            language: 'uk',
+            'event-title': 'Тези Всеукраїнської науково-практичної інтернет-конференції студентів, аспірантів та молодих вчених',
+            'publisher-place': 'Хмельницький',
+            page: '113-116',
+            issued: { 'date-parts': [[2022, 11, 29]] },
           }
         },
         bibliography: true
       },
       checks: [
         (output) => output.indexOf('Іванов') < output.indexOf('Коваленко'), // Українські за алфавітом
-        (output) => output.indexOf('Коваленко') < output.indexOf('Федоренко'), // Українські за алфавітом
+        (output) => output.indexOf('Коваленко') < output.indexOf('Сапожник'), // Українські за алфавітом
+        (output) => output.indexOf('Сапожник') < output.indexOf('Федоренко'), // Українські за алфавітом
         (output) => output.indexOf('Федоренко') < output.indexOf('Anderson'), // Все укр перед англ
         (output) => output.indexOf('Anderson') < output.indexOf('Brown'), // Англійські за алфавітом
         (output) => output.indexOf('Brown') < output.indexOf('Wilson') // Англійські за алфавітом
