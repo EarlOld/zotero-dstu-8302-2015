@@ -1,10 +1,10 @@
 {
   "name": "zotero-dstu-8302-2015",
   "version": "1.0.0",
-  "description": "",
+  "description": "CSL citation style for ДСТУ 8302:2015 Ukrainian bibliography standard with support for books, journal articles, conferences, patents, standards, dissertations, and web resources. Includes Playwright E2E tests and Node.js citeproc server integration.",
   "main": "index.js",
   "scripts": {
-    "start:server": "bash ./run-server.sh",
+    "start:server": "nodemon --watch dstu-8302-2015.csl --ext csl --exec 'bash ./run-server.sh'",
     "test": "playwright test --reporter=list",
     "test:playwright:ui": "playwright test --ui",
     "test:playwright:debug": "playwright test --debug",
@@ -14,8 +14,8 @@
     "type": "git",
     "url": "git+https://github.com/EarlOld/zotero-dstu-8302-2015.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["zotero", "citation", "csl", "citation-style-language", "дсту", "8302", "ukraine", "ukrainian", "bibliography", "bibliography-style", "bib"],
+  "author": "EarlOld",
   "license": "ISC",
   "type": "module",
   "bugs": {
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/EarlOld/zotero-dstu-8302-2015#readme",
   "devDependencies": {
-    "@playwright/test": "^1.58.0"
+    "@playwright/test": "^1.58.0",
+    "nodemon": "^3.0.0"
   }
 }

@@ -16,6 +16,7 @@
       Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
 
+
   <!-- Ukrainian locale -->
   <locale xml:lang="uk">
     <terms>
@@ -35,33 +36,13 @@
       <term name="translator" form="verb-short">пер.</term>
       <term name="translator" form="verb">перекл.</term>
       <term name="et-al">та ін.</term>
+      <term name="et-ale">et al.</term>
       <term name="and">та</term>
       <term name="accessed">дата звернення</term>
       <term name="no date">б.д.</term>
       <term name="in">в</term>
       <term name="container-author" form="verb">за ред.</term>
-      <term name="sort_language_cyr">20_cyr</term>
-      <term name="sort_language_lat">50_lat</term>
-    </terms>
-  </locale>
-
-  <!-- English locale -->
-  <locale xml:lang="en">
-    <terms>
-      <term name="page" form="short">p.</term>
-      <term name="pages" form="short">pp.</term>
-      <term name="volume" form="short">vol.</term>
-      <term name="issue" form="short">no.</term>
-      <term name="edition" form="short">ed.</term>
-      <term name="chapter" form="short">ch.</term>
-      <term name="editor" form="verb-short">ed.</term>
-      <term name="translator" form="verb-short">trans.</term>
-      <term name="et-al">et al.</term>
-      <term name="and">and</term>
-      <term name="accessed">accessed</term>
-      <term name="no date">n.d.</term>
-      <term name="in">in</term>
-      <term name="container-author" form="verb">ed.</term>
+      <term name="preprint">Препринт</term>
       <term name="sort_language_cyr">20_cyr</term>
       <term name="sort_language_lat">50_lat</term>
     </terms>
@@ -72,7 +53,9 @@
   <!-- Authors/Editors -->
   <macro name="author">
     <names variable="author">
-      <name form="long" and="text" delimiter=", " name-as-sort-order="first" sort-separator=" " />
+      <name form="long" and="text" delimiter=", " name-as-sort-order="first" sort-separator=" "
+        et-al-min="4" et-al-use-first="3" delimiter-precedes-et-al="never" />
+      <et-al term="et-al" />
       <substitute>
         <names variable="editor" />
         <names variable="container-author" />
@@ -83,7 +66,9 @@
 
   <macro name="author-short">
     <names variable="author">
-      <name form="short" and="text" delimiter=", " name-as-sort-order="first" />
+      <name form="short" and="text" delimiter=", " name-as-sort-order="first" et-al-min="4"
+        et-al-use-first="3" />
+      <et-al term="et-al" />
       <substitute>
         <names variable="editor" />
         <text variable="title" form="short" />
@@ -92,10 +77,31 @@
   </macro>
 
   <macro name="editor">
-    <names variable="editor">
-      <label form="verb" suffix=" " />
-      <name form="long" and="text" delimiter=", " />
-    </names>
+    <choose>
+      <if match="any" variable="language">
+        <choose>
+          <if match="any" variable="editor">
+            <text value="за ред. " />
+          </if>
+        </choose>
+        <names variable="editor reviewed-author collection-editor" delimiter=", ">
+          <name />
+          <et-al term="et-ale" />
+        </names>
+      </if>
+      <else>
+        <choose>
+          <if match="any" variable="editor">
+            <text value="ed. " />
+          </if>
+        </choose>
+        <names variable="editor reviewed-author collection-editor" delimiter=", ">
+          <name suffix="." delimiter-precedes-last="never" et-al-min="3" et-al-use-first="3"
+            initialize-with=". " sort-separator=" " />
+          <et-al term="et-ale" />
+        </names>
+      </else>
+    </choose>
   </macro>
 
   <macro name="translator">
@@ -153,54 +159,25 @@
 
   <!-- Volume and issue -->
   <macro name="volume-issue">
-    <choose>
-      <!-- English language: use Vol., no. -->
-      <if variable="language" match="any" pattern="en">
-        <group delimiter=", ">
-          <group delimiter=" ">
-            <text value="Vol." />
-            <text variable="volume" />
-          </group>
-          <group delimiter=" ">
-            <text value="no." />
-            <text variable="issue" />
-          </group>
-        </group>
-      </if>
-      <!-- Ukrainian language: use Т., Вип. -->
-      <else>
-        <group delimiter=", ">
-          <group delimiter=" ">
-            <text value="Т." />
-            <text variable="volume" />
-          </group>
-          <group delimiter=" ">
-            <text value="Вип." />
-            <text variable="issue" />
-          </group>
-        </group>
-      </else>
-    </choose>
+    <!-- Default to Ukrainian format (Т., Вип.) for ДСТУ standard -->
+    <group delimiter=", ">
+      <group delimiter=" ">
+        <text value="Т." />
+        <text variable="volume" />
+      </group>
+      <group delimiter=" ">
+        <text value="Вип." />
+        <text variable="issue" />
+      </group>
+    </group>
   </macro>
 
   <!-- Pages -->
   <macro name="pages">
-    <choose>
-      <!-- English language: use P. -->
-      <if variable="language" match="any" pattern="en">
-        <group delimiter=" ">
-          <text value="P." />
-          <text variable="page" />
-        </group>
-      </if>
-      <!-- Ukrainian language: use С. -->
-      <else>
-        <group delimiter=" ">
-          <text value="С." />
-          <text variable="page" />
-        </group>
-      </else>
-    </choose>
+    <group delimiter=" ">
+      <text value="С." />
+      <text variable="page" />
+    </group>
   </macro>
 
   <!-- Issued date -->
@@ -282,6 +259,36 @@
     </choose>
   </macro>
 
+  <!-- Preprint info (with language support) -->
+  <macro name="preprint-info">
+    <choose>
+      <if match="any" variable="language">
+        <!-- Ukrainian -->
+        <group delimiter=" ">
+          <text term="preprint" text-case="capitalize-first" />
+          <text variable="archive" />
+          <choose>
+            <if variable="number" match="any">
+              <text variable="number" prefix="№ " />
+            </if>
+          </choose>
+        </group>
+      </if>
+      <else>
+        <!-- English -->
+        <group delimiter=" ">
+          <text term="preprint" text-case="capitalize-first" />
+          <text variable="archive" />
+          <choose>
+            <if variable="number" match="any">
+              <text variable="number" prefix="No. " />
+            </if>
+          </choose>
+        </group>
+      </else>
+    </choose>
+  </macro>
+
   <!-- CITATION (numeric with ranges) -->
   <citation collapse="citation-number">
     <sort>
@@ -355,6 +362,27 @@
                 <text macro="doi" suffix="." />
               </if>
             </choose>
+            <choose>
+              <if variable="URL" match="any">
+                <text macro="access" suffix="." />
+              </if>
+            </choose>
+          </group>
+        </else-if>
+
+        <!-- Preprint -->
+        <else-if type="preprint">
+          <group delimiter=" ">
+            <text macro="author" suffix="." />
+            <text macro="title" suffix="." />
+            <text value="Препринт" />
+            <text variable="archive" />
+            <choose>
+              <if variable="number" match="any">
+                <text variable="number" prefix="№ " suffix="." />
+              </if>
+            </choose>
+            <text macro="issued" suffix="." />
             <choose>
               <if variable="URL" match="any">
                 <text macro="access" suffix="." />

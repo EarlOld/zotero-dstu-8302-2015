@@ -17,7 +17,8 @@ export default [
           volume: '12',
           issue: '3',
           page: '45-52',
-          issued: { 'date-parts': [[2020]] }
+          issued: { 'date-parts': [[2020]] },
+          language: 'uk'
         }
       },
       bibliography: true
@@ -42,7 +43,7 @@ export default [
       },
       bibliography: true
     },
-    expected: '1. Smith J. Digital signal processing. IEEE Transactions. 2021. Vol. 15. P. 123—135.'
+    expected: '1. Smith J. Digital signal processing. IEEE Transactions. 2021. Т. 15. С. 123—135.'
   },
   {
     name: 'Journal article (Ukrainian) - Example 2',
@@ -60,7 +61,8 @@ export default [
           volume: '97',
           issue: '1-2',
           page: '39-49',
-          issued: { 'date-parts': [[2019]] }
+          issued: { 'date-parts': [[2019]] },
+          language: 'uk'
         }
       },
       bibliography: true
@@ -79,7 +81,8 @@ export default [
           'container-title': 'Метрологія та прилади',
           issue: '4',
           page: '23-30',
-          issued: { 'date-parts': [[2022]] }
+          issued: { 'date-parts': [[2022]] },
+          language: 'uk'
         }
       },
       bibliography: true
@@ -100,7 +103,8 @@ export default [
           volume: '59',
           issue: '1',
           page: '78-85',
-          issued: { 'date-parts': [[2020]] }
+          issued: { 'date-parts': [[2020]] },
+          language: 'uk'
         }
       },
       bibliography: true
@@ -123,7 +127,8 @@ export default [
           volume: '97',
           issue: '1-2',
           page: '39-49',
-          issued: { 'date-parts': [[2019]] }
+          issued: { 'date-parts': [[2019]] },
+          language: 'uk'
         }
       },
       bibliography: true
@@ -148,7 +153,8 @@ export default [
           issued: { 'date-parts': [[2021]] },
           DOI: '10.20535/kpi.2021.3.67-74',
           URL: 'https://doi.org/10.20535/kpi.2021.3.67-74',
-          accessed: { 'date-parts': [[2024, 3, 15]] }
+          accessed: { 'date-parts': [[2024, 3, 15]] },
+          language: 'uk'
         }
       },
       bibliography: true
@@ -173,7 +179,8 @@ export default [
           page: '234-248',
           issued: { 'date-parts': [[2023]] },
           URL: 'https://doi.org/10.1016/j.jms.2023.05.012',
-          accessed: { 'date-parts': [[2024, 4, 12]] }
+          accessed: { 'date-parts': [[2024, 4, 12]] },
+          language: 'en'
         }
       },
       bibliography: true

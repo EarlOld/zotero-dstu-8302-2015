@@ -39,12 +39,13 @@ export default [
           page: '240-245',
           issued: { 'date-parts': [[2024]] },
           DOI: '10.26642/ten-2024-1(93)-240-245',
-          URL: 'https://doi.org/10.26642/ten-2024-1(93)-240-245'
+          URL: 'https://doi.org/10.26642/ten-2024-1(93)-240-245',
+          language: 'uk'
         }
       },
       bibliography: true
     },
-    expected: '1. Сапожник Д. О. Аналіз можливостей мови програмування Q# шляхом реалізації програми для генерації випадкових чисел. Технічна інженерія. 2024. Т. 1, Вип. 1(93). С. 240—245. DOI: 10.26642/ten-2024-1(93)-240-245. URL: https://doi.org/10.26642/ten-2024-1(93)-240-245.'
+    expected: '1. Сапожник Д. О. Аналіз можливостей мови програмування Q# шляхом реалізації програми для генерації випадкових чисел. Технічна інженерія. 2024. Т. 1, Вип. 1(93). С. 240–245. DOI: 10.26642/ten-2024-1(93)-240-245. URL: https://doi.org/10.26642/ten-2024-1(93)-240-245.'
   },
   {
     name: 'Own article 3: Quantum transpilation (Ukrainian)',
@@ -61,7 +62,8 @@ export default [
           page: '327-332',
           issued: { 'date-parts': [[2025]] },
           DOI: '10.35546/kntu2078-4481.2025.2.2.40',
-          URL: 'https://doi.org/10.35546/kntu2078-4481.2025.2.2.40'
+          URL: 'https://doi.org/10.35546/kntu2078-4481.2025.2.2.40',
+          language: 'uk'
         }
       },
       bibliography: true
@@ -70,7 +72,7 @@ export default [
       (output) => output.includes('Сапожник Д. О.'),
       (output) => output.includes('Процес перетворення'),
       (output) => output.includes('2025'),
-      (output) => output.includes('327—332'),
+      (output) => output.includes('327–332'),
       (output) => output.includes('DOI: 10.35546/kntu2078-4481.2025.2.2.40')
     ]
   }
