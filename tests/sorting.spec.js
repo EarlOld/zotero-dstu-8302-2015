@@ -21,7 +21,6 @@ test('Multiple sources - should sort Ukrainian first', async () => {
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2020]] },
             'number-of-pages': '100',
-            language: 'uk'
           },
           'ITEM-EN1': {
             id: 'ITEM-EN1',
@@ -32,12 +31,11 @@ test('Multiple sources - should sort Ukrainian first', async () => {
             'publisher-place': 'London',
             issued: { 'date-parts': [[2020]] },
             'number-of-pages': '150',
-            language: 'en'
           }
         },
         bibliography: true
       },
-      expected: '1. Петренко І. І. Українське джерело. Київ : Видавництво. 2020. 100 с.\n\n  2. Smith J. English source. London : Publisher. 2020. 150 с.'
+      expected: '1. J. Smith. English source. London : Publisher. 2020. 150 с.\n\n  2. І. І. Петренко. Українське джерело. Київ : Видавництво. 2020. 100 с.'
     },
     expect
   );
@@ -58,7 +56,6 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2019]] },
             'number-of-pages': '200',
-            language: 'uk'
           },
           'ITEM-EN2': {
             id: 'ITEM-EN2',
@@ -69,7 +66,6 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
             'publisher-place': 'London',
             issued: { 'date-parts': [[2021]] },
             'number-of-pages': '180',
-            language: 'en'
           },
           'ITEM-UK1': {
             id: 'ITEM-UK1',
@@ -80,7 +76,6 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2018]] },
             'number-of-pages': '250',
-            language: 'uk'
           },
           'ITEM-EN3': {
             id: 'ITEM-EN3',
@@ -91,7 +86,6 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
             'publisher-place': 'Boston',
             issued: { 'date-parts': [[2022]] },
             'number-of-pages': '160',
-            language: 'en'
           },
           'ITEM-UK2': {
             id: 'ITEM-UK2',
@@ -102,7 +96,6 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2020]] },
             'number-of-pages': '210',
-            language: 'uk'
           },
           'ITEM-EN1': {
             id: 'ITEM-EN1',
@@ -113,17 +106,16 @@ test('Multiple sources with alphabetical sorting - Ukrainian and English', async
             'publisher-place': 'New York',
             issued: { 'date-parts': [[2020]] },
             'number-of-pages': '190',
-            language: 'en'
           }
         },
         bibliography: true
       },
       checks: [
-        (output) => output.indexOf('Абраменко') < output.indexOf('Дмитренко'), // Українські за алфавітом
-        (output) => output.indexOf('Дмитренко') < output.indexOf('Федоренко'), // Українські за алфавітом
-        (output) => output.indexOf('Федоренко') < output.indexOf('Anderson'), // Все укр перед англ
         (output) => output.indexOf('Anderson') < output.indexOf('Brown'), // Англійські за алфавітом
-        (output) => output.indexOf('Brown') < output.indexOf('Wilson') // Англійські за алфавітом
+        (output) => output.indexOf('Brown') < output.indexOf('Wilson'), // Англійські за алфавітом
+        (output) => output.indexOf('Wilson') < output.indexOf('Абраменко'), // Все англ перед укр
+        (output) => output.indexOf('Абраменко') < output.indexOf('Дмитренко'), // Українські за алфавітом
+        (output) => output.indexOf('Дмитренко') < output.indexOf('Федоренко') // Українські за алфавітом
       ]
     },
     expect

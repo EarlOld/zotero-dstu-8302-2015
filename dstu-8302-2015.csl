@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" class="numeric" version="1.0"
-  demote-non-dropping-particle="sort-only" default-locale="uk-UA" page-range-format="expanded">
+  demote-non-dropping-particle="sort-only" default-locale="en-US" page-range-format="expanded">
   <info>
     <title>ДСТУ 8302:2015 (Ukrainian)</title>
     <id>http://www.zotero.org/styles/dstu-8302-2015</id>
@@ -16,35 +16,16 @@
       Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
 
-
-  <!-- Ukrainian locale -->
+  <!-- Locales for language-specific et-al handling -->
   <locale xml:lang="uk">
     <terms>
-      <term name="page" form="short">с.</term>
-      <term name="page" form="long">сторінка</term>
-      <term name="pages" form="short">с.</term>
-      <term name="pages" form="long">сторінки</term>
-      <term name="volume" form="short">т.</term>
-      <term name="issue" form="short">вип.</term>
-      <term name="issue" form="long">випуск</term>
-      <term name="edition" form="short">вид.</term>
-      <term name="edition" form="long">видання</term>
-      <term name="chapter" form="short">гл.</term>
-      <term name="chapter" form="long">глава</term>
-      <term name="editor" form="verb-short">ред.</term>
-      <term name="editor" form="verb">за ред.</term>
-      <term name="translator" form="verb-short">пер.</term>
-      <term name="translator" form="verb">перекл.</term>
-      <term name="et-al">та ін.</term>
-      <term name="et-ale">et al.</term>
-      <term name="and">та</term>
-      <term name="accessed">дата звернення</term>
-      <term name="no date">б.д.</term>
-      <term name="in">в</term>
-      <term name="container-author" form="verb">за ред.</term>
-      <term name="preprint">Препринт</term>
-      <term name="sort_language_cyr">20_cyr</term>
-      <term name="sort_language_lat">50_lat</term>
+      <term name="et-al">та інші</term>
+    </terms>
+  </locale>
+  
+  <locale xml:lang="en">
+    <terms>
+      <term name="et-al">et al.</term>
     </terms>
   </locale>
 
@@ -53,7 +34,7 @@
   <!-- Authors/Editors -->
   <macro name="author">
     <names variable="author">
-      <name form="long" and="text" delimiter=", " name-as-sort-order="first" sort-separator=" "
+      <name form="long" delimiter=", " sort-separator=" "
         et-al-min="4" et-al-use-first="3" delimiter-precedes-et-al="never" />
       <et-al term="et-al" />
       <substitute>
@@ -66,42 +47,24 @@
 
   <macro name="author-short">
     <names variable="author">
-      <name form="short" and="text" delimiter=", " name-as-sort-order="first" et-al-min="4"
-        et-al-use-first="3" />
-      <et-al term="et-al" />
+      <name form="short" delimiter=", " />
       <substitute>
-        <names variable="editor" />
-        <text variable="title" form="short" />
+        <text variable="title" />
       </substitute>
     </names>
   </macro>
 
   <macro name="editor">
     <choose>
-      <if match="any" variable="language">
-        <choose>
-          <if match="any" variable="editor">
-            <text value="за ред. " />
-          </if>
-        </choose>
-        <names variable="editor reviewed-author collection-editor" delimiter=", ">
-          <name />
-          <et-al term="et-ale" />
-        </names>
+      <if match="any" variable="editor">
+        <text value="ed. " />
       </if>
-      <else>
-        <choose>
-          <if match="any" variable="editor">
-            <text value="ed. " />
-          </if>
-        </choose>
-        <names variable="editor reviewed-author collection-editor" delimiter=", ">
-          <name suffix="." delimiter-precedes-last="never" et-al-min="3" et-al-use-first="3"
-            initialize-with=". " sort-separator=" " />
-          <et-al term="et-ale" />
-        </names>
-      </else>
     </choose>
+    <names variable="editor reviewed-author collection-editor" delimiter=", ">
+      <name suffix="." delimiter-precedes-last="never" et-al-min="3" et-al-use-first="3"
+        initialize-with=". " sort-separator=" " />
+      <et-al term="et-al" />
+    </names>
   </macro>
 
   <macro name="translator">
@@ -157,25 +120,24 @@
     </group>
   </macro>
 
-  <!-- Volume and issue -->
+  <!-- Volume and issue (English) -->
   <macro name="volume-issue">
-    <!-- Default to Ukrainian format (Т., Вип.) for ДСТУ standard -->
     <group delimiter=", ">
       <group delimiter=" ">
-        <text value="Т." />
+        <text value="Vol." />
         <text variable="volume" />
       </group>
       <group delimiter=" ">
-        <text value="Вип." />
+        <text value="Issue" />
         <text variable="issue" />
       </group>
     </group>
   </macro>
 
-  <!-- Pages -->
+  <!-- Pages (English) -->
   <macro name="pages">
     <group delimiter=" ">
-      <text value="С." />
+      <text value="P." />
       <text variable="page" />
     </group>
   </macro>
@@ -259,34 +221,17 @@
     </choose>
   </macro>
 
-  <!-- Preprint info (with language support) -->
+  <!-- Preprint info (English only) -->
   <macro name="preprint-info">
-    <choose>
-      <if match="any" variable="language">
-        <!-- Ukrainian -->
-        <group delimiter=" ">
-          <text term="preprint" text-case="capitalize-first" />
-          <text variable="archive" />
-          <choose>
-            <if variable="number" match="any">
-              <text variable="number" prefix="№ " />
-            </if>
-          </choose>
-        </group>
-      </if>
-      <else>
-        <!-- English -->
-        <group delimiter=" ">
-          <text term="preprint" text-case="capitalize-first" />
-          <text variable="archive" />
-          <choose>
-            <if variable="number" match="any">
-              <text variable="number" prefix="No. " />
-            </if>
-          </choose>
-        </group>
-      </else>
-    </choose>
+    <group delimiter=" ">
+      <text term="preprint" text-case="capitalize-first" />
+      <text variable="archive" />
+      <choose>
+        <if variable="number" match="any">
+          <text variable="number" prefix="No. " />
+        </if>
+      </choose>
+    </group>
   </macro>
 
   <!-- CITATION (numeric with ranges) -->

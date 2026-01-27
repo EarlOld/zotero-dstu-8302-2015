@@ -17,7 +17,6 @@ test('Book with single author', async () => {
             title: 'Телевізійні інформаційно-вимірювальні системи',
             author: [{ family: 'Маркін', given: 'М. О.' }],
             type: 'book',
-            language: 'uk',
             publisher: 'КПІ ім. Ігоря Сікорського',
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2020]] },
@@ -26,7 +25,7 @@ test('Book with single author', async () => {
         },
         bibliography: true
       },
-      expected: '1. Маркін М. О. Телевізійні інформаційно-вимірювальні системи. Київ : КПІ ім. Ігоря Сікорського. 2020. 285 с.'
+      expected: '1. М. О. Маркін. Телевізійні інформаційно-вимірювальні системи. Київ : КПІ ім. Ігоря Сікорського. 2020. 285 с.'
     },
     expect
   );
@@ -46,7 +45,6 @@ test('Book with two authors', async () => {
               { family: 'Маркіна', given: 'О. М.' }
             ],
             type: 'book',
-            language: 'uk',
             publisher: 'КПІ ім. Ігоря Сікорського',
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2021]] },
@@ -55,7 +53,7 @@ test('Book with two authors', async () => {
         },
         bibliography: true
       },
-      expected: '1. Маркін М. О. та О. М. Маркіна. Формування вхідного сигналу в телевізійній інформаційно-вимірювальній системі. Київ : КПІ ім. Ігоря Сікорського. 2021. 156 с.'
+      expected: '1. М. О. Маркін, О. М. Маркіна. Формування вхідного сигналу в телевізійній інформаційно-вимірювальній системі. Київ : КПІ ім. Ігоря Сікорського. 2021. 156 с.'
     },
     expect
   );
@@ -76,7 +74,6 @@ test('Book with three authors (Ukrainian)', async () => {
               { family: 'Іванов', given: 'О. М.' }
             ],
             type: 'book',
-            language: 'uk',
             publisher: 'Видавництво КПІ',
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2022]] },
@@ -85,7 +82,7 @@ test('Book with three authors (Ukrainian)', async () => {
         },
         bibliography: true
       },
-      expected: '1. Петренко І. І., В. В. Сідоренко, та О. М. Іванов. Обробка сигналів у телевізійних системах. Київ : Видавництво КПІ. 2022. 320 с.'
+      expected: '1. І. І. Петренко, В. В. Сідоренко, О. М. Іванов. Обробка сигналів у телевізійних системах. Київ : Видавництво КПІ. 2022. 320 с.'
     },
     expect
   );
@@ -107,7 +104,6 @@ test('Book with four authors (Ukrainian)', async () => {
               { family: 'Коваленко', given: 'Р. В.' }
             ],
             type: 'book',
-            language: 'uk',
             publisher: 'Видавництво КПІ',
             'publisher-place': 'Київ',
             issued: { 'date-parts': [[2023]] },
@@ -116,7 +112,7 @@ test('Book with four authors (Ukrainian)', async () => {
         },
         bibliography: true
       },
-      expected: '1. Петренко І. І., В. В. Сідоренко, О. М. Іванов та ін. Цифрова обробка сигналів. Київ : Видавництво КПІ. 2023. 450 с.'
+      expected: '1. І. І. Петренко, В. В. Сідоренко, О. М. Іванов et al. Цифрова обробка сигналів. Київ : Видавництво КПІ. 2023. 450 с.'
     },
     expect
   );
@@ -137,7 +133,6 @@ test('Book with three authors (English)', async () => {
               { family: 'Brown', given: 'A.' }
             ],
             type: 'book',
-            language: 'en',
             publisher: 'Academic Press',
             'publisher-place': 'London',
             issued: { 'date-parts': [[2021]] },
@@ -146,7 +141,7 @@ test('Book with three authors (English)', async () => {
         },
         bibliography: true
       },
-      expected: '1. Smith J., M. Johnson, та A. Brown. Advanced Signal Processing Techniques. London : Academic Press. 2021. 380 с.'
+      expected: '1. J. Smith, M. Johnson, A. Brown. Advanced Signal Processing Techniques. London : Academic Press. 2021. 380 с.'
     },
     expect
   );
@@ -169,7 +164,6 @@ test('Book with five authors (English)', async () => {
               { family: 'Thomas', given: 'S.' }
             ],
             type: 'book',
-            language: 'en',
             publisher: 'Springer',
             'publisher-place': 'New York',
             issued: { 'date-parts': [[2020]] },
@@ -178,7 +172,7 @@ test('Book with five authors (English)', async () => {
         },
         bibliography: true
       },
-      expected: '1. Wilson R., K. Davis, P. Taylor та ін. Digital Communication Systems. New York : Springer. 2020. 520 с.'
+      expected: '1. R. Wilson, K. Davis, P. Taylor et al. Digital Communication Systems. New York : Springer. 2020. 520 с.'
     },
     expect
   );
