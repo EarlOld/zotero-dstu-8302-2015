@@ -294,7 +294,7 @@
         </else-if>
 
         <!-- Journal article -->
-        <else-if type="article-journal">
+        <else-if type="article-journal article">
           <group delimiter=" ">
             <text macro="author" suffix="." />
             <text macro="title" suffix="." />
@@ -320,7 +320,7 @@
           <group delimiter=" ">
             <text macro="author" suffix="." />
             <text macro="title" suffix="." />
-            <text value="Препринт" />
+            <text value="Preprint." />
             <text variable="archive" />
             <choose>
               <if variable="number" match="any">
